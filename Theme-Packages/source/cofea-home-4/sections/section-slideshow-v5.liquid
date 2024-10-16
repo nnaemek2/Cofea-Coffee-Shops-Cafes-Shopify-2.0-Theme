@@ -1,0 +1,219 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+{% for block in section.blocks %}
+{% if block.type == "slideshow" %}
+  {% if block.settings.fonts_sub_1 !=blank %}
+  <link href="https://fonts.googleapis.com/css2?family={{block.settings.fonts_sub_1}}:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  {% endif %}
+{% endif %}
+{% endfor %}
+
+<div data-section-id="{{ section.id }}" data-section-type="section-slideshow-v5" style="{% if section.settings.margin_top != blank %}margin-top: {{section.settings.margin_top}}px;{%endif%} {% if section.settings.margin_bottom != blank %}margin-bottom: {{section.settings.margin_bottom}}px;{% endif %} {% if section.settings.sections_layout == "dark" %}background: {{section.settings.sections_bg_color}};{% endif %}">
+  <div class="section-slideshow-v5">
+    <div class="slick-side-h5">       
+      {% if section.blocks.size > 0 %}
+      {% for block in section.blocks %}
+      {% if block.type == "slideshow" %}
+      <div class="item-slide ">
+        <div class="img-slide">
+          <div class=" d-md-block">
+            <a href="{{block.settings.url_btn}}" class="d-block"> 
+              <img loading="lazy" width="" height="" data-src="{% if block.settings.img_slide != blank %} {{block.settings.img_slide | image_url }} {% else %}  //via.placeholder.com/1920x900 {% endif %}" class="lazyload img_desktop img-fluid w-100" alt="_img_slide_">
+            </a>
+          </div>
+
+        </div>
+        <div class="slide-content" style="background: {{block.settings.bg_section}}">
+          <div class="content-banner">
+            <img loading="lazy" width="" height="" data-src="{% if block.settings.img_logo != blank %} {{block.settings.img_logo | img_url : 'master'}} {% else %}  //via.placeholder.com/195x57 {% endif %}" class="lazyload img-fluid " alt="_img_logo_">
+            {%  if block.settings.content != blank %}
+            <p class="content" style="color: {{block.settings.color_content}}">{{block.settings.content}}</p>
+            {% endif %}
+            {%  if block.settings.title_slide != blank %}
+            <h3 class="title-slide" style="color: {{block.settings.color_title}}">{{block.settings.title_slide}}</h3>
+            {% endif %}
+            {% if block.settings.btn_slide != blank %}
+            <div class="box-btn">
+              <a href="{{block.settings.url_btn}}" class="btn-slide btn-slide-{{ block.id }}">{{block.settings.btn_slide}}</a>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      {% endif %}
+      {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+</div>
+<style>
+  {% for block in section.blocks %}
+  {% if block.type == 'slideshow' %}
+  .section-slideshow-v5 .slick-side-h5 .item-slide .slide-content .box-btn .btn-slide-{{ block.id }} {
+    color: {{block.settings.color_btn}};
+    background: {{block.settings.bg_btn}};
+  }
+  .section-slideshow-v5 .slick-side-h5 .item-slide .slide-content .box-btn .btn-slide-{{ block.id }} svg {
+    fill: {{block.settings.color_btn}};
+  }
+  .section-slideshow-v5 .slick-side-h5 .item-slide .slide-content .box-btn .btn-slide-{{ block.id }}:hover {
+    color: {{block.settings.color_btn_hover}};	
+    background: {{block.settings.bg_btn_hover}};
+  }
+  .section-slideshow-v5 .slick-side-h5 .item-slide .slide-content .box-btn .btn-slide-{{ block.id }}:hover svg {
+    fill: {{block.settings.color_btn_hover}};	
+  }
+  .section-slideshow-v5 .item-slide .slide-content .content-banner .content {
+    {% if block.settings.fonts_sub_1 != blank %}
+    font-family: '{{block.settings.fonts_sub_1}}';
+      {% endif %}
+  }
+  {% endif %}
+  {% endfor %}
+</style>
+
+{% schema %}
+{
+  "name": "SLIDESHOW V5",
+  "class": "index-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Space"
+    },
+    {
+      "type": "text",
+      "id": "margin_top",
+      "label": "Margin Top",
+      "info": "Defined in pixels. Do not add the 'px' unit."
+    },
+    {
+      "type": "text",
+      "id": "margin_bottom",
+      "label": "Margin Bottom",
+      "info": "Defined in pixels. Do not add the 'px' unit."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slideshow",
+      "name": "slideshow",
+      "settings": [
+		{
+          "type": "image_picker",
+          "id": "img_slide",
+          "label": "Image slideshow for destop",
+          "info": "1920 x 900px recommended"
+        },
+        {
+          "type": "color",
+          "id": "bg_section",
+          "label": "Bacground Content",
+          "default": "#fff"
+        },
+
+		{
+          "type": "image_picker",
+          "id": "img_logo",
+          "label": "Image Logo ",
+          "info": "195 x 57px recommended"
+        },
+        {
+          "type": "text",
+          "id": "title_slide",
+          "label": "Title ",
+          "default": "Basic Collection"
+        },
+		{		
+           "type": "color",
+           "id": "color_title",
+           "label": "Color Title",
+           "default": "#000"
+        },
+        {
+          "type": "text",
+          "id": "content",
+          "label": "Sub Title ",
+          "default": "Basic Collection"
+        },
+		{
+          "type": "text",
+          "id": "fonts_sub_1",
+          "label": "Fonts Family"
+        },
+		{		
+           "type": "color",
+           "id": "color_content",
+           "label": "Color Sub Title",
+           "default": "#000"
+        },
+        {
+          "type": "text",
+          "id": "btn_slide",
+          "label": "Button",
+          "default": "Shop Now"
+        },
+		{		
+           "type": "color",
+           "id": "color_btn",
+           "label": "Color Button",
+           "default": "#fff"
+        },
+		{		
+           "type": "color",
+           "id": "bg_btn",
+           "label": "Background Color",
+           "default": "#fe7250"
+        },
+		{		
+           "type": "color",
+           "id": "color_btn_hover",
+           "label": "Color Button Hover",
+           "default": "#fff"
+        },
+		{		
+           "type": "color",
+           "id": "bg_btn_hover",
+           "label": "Background Color Hover",
+           "default": "#fe7250"
+        },
+        {
+          "type": "url",
+          "id": "url_btn",
+          "label": "URL Button",
+          "default": "/collections/all"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "SLIDESHOW V5",
+      "category": "HOME",
+	  "blocks": [
+        {
+          "type": "slideshow",
+          "settings": {
+            "title_slide": "Basic Collection",
+			"btn_slide": "Shop now"
+          }
+        },
+		 {
+          "type": "slideshow",
+          "settings": {
+            "title_slide": "Basic Collection",
+			"btn_slide": "Shop now"
+          }
+        }		
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
