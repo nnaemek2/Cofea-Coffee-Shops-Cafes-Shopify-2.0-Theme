@@ -1,0 +1,370 @@
+<div data-section-id="{{ section.id }}" data-section-type="section-banner-v9" style="{% if section.settings.margin_top != blank %}margin-top: {{section.settings.margin_top}}px;{% endif %} {% if section.settings.margin_bottom != blank %}margin-bottom: {{section.settings.margin_bottom}}px;{% endif %}">
+  <div class="section-banner-v9">
+    <div class="container container-v2 "> 
+      <div class="row ">  
+        <div class="col-lg-6 p-30">
+          <div class="banner-info">
+            <div class="banner-img">
+              <a href="{{section.settings.url_banner}}">
+                {% if section.settings.img_banner != blank %}
+                <img loading="lazy" width="" height="" data-src="{{ section.settings.img_banner | image_url }}" class="lazyload img-fluid w-100" alt="_img">
+                {% else %}
+                <img loading="lazy" width="" height="" data-src="//via.placeholder.com/700x380" class="lazyload img-fluid w-100" alt="_img">
+                {% endif %}
+              </a>
+            </div> 
+            <div class="banner-content ">
+              {% if section.settings.sub_title_banner != blank %}
+              <h6 class="sub-title" style="color: {{section.settings.color_sub_title}}">{{section.settings.sub_title_banner}}</h6>
+              {% endif %}
+              {% if section.settings.title_banner != blank %}
+              <h3 class="title-banner" style="color: {{section.settings.color_title}}">{{section.settings.title_banner}}</h3>
+              {% endif %}
+
+              {% if section.settings.button_banner != blank %}
+              <a href="{{section.settings.url_banner}}" class="button button-shop-{{ section.id }}" title="">{{section.settings.button_banner}}</a>
+              {% endif %}
+            </div>
+          </div>
+          <div class="banner-info" style="margin-top:30px">
+            <div class="banner-img img2">
+              <a href="{{section.settings.url_banner}}">
+                {% if section.settings.img_banner2 != blank %}
+                <img loading="lazy" width="" height="" data-src="{{ section.settings.img_banner2 | image_url }}" class="lazyload img-fluid w-100" alt="_img">
+                {% else %}
+                <img loading="lazy" width="" height="" data-src="//via.placeholder.com/700x580" class="lazyload img-fluid w-100" alt="_img">
+                {% endif %}
+              </a>
+            </div>
+            <div class="banner-content ">
+              {% if section.settings.sub_title_banner2 != blank %}
+              <h6 class="sub-title" style="color: {{section.settings.color_sub_title2}}">{{section.settings.sub_title_banner2}}</h6>
+              {% endif %}
+              {% if section.settings.title_banner2 != blank %}
+              <h3 class="title-banner" style="color: {{section.settings.color_title2}}">{{section.settings.title_banner2}}</h3>
+              {% endif %}
+
+              {% if section.settings.button_banner2 != blank %}
+              <a href="{{section.settings.url_banner}}" class="button button-shop-{{ section.id }}" title="">{{section.settings.button_banner2}}</a>
+              {% endif %}
+            </div>
+          </div>
+        </div> 
+        <div class="col-lg-6 p-30">
+          <div class="content-pro" style="    margin-bottom: 30px;">
+            {% if section.settings.sub_title_banner3 != blank %}
+            <h6 class="sub-title" style="color: {{section.settings.color_sub_title3}}">{{section.settings.sub_title_banner3}}</h6>
+            {% endif %}
+            {% if section.settings.title_banner3 != blank %}
+            <h3 class="title-banner" style="color: {{section.settings.color_title3}}">{{section.settings.title_banner3}}</h3>
+            {% endif %}
+          </div>
+          <div class="product">            
+            <div class="row listproduct">   
+            {% assign products_limit = section.settings.products_limit %}
+            {% assign col = section.settings.select_collection %}
+            {% for product in collections[col].products limit: products_limit %}
+            <div class="col-lg-6  col-6 product_item">
+              {% include 'product-item-v1' %}
+            </div>
+            {% else %}
+            {% for i in (1..section.settings.products_limit) %}
+            <div class="col-lg-6 col-6 product_item">
+              {% include 'empty-product-item' %}
+            </div>
+            {% endfor %}
+            {% endfor %}
+          </div>
+          </div>
+          <div class="elementor-section ">
+            <div class="content-elementor text-center">
+              {% if section.settings.img_logo != blank %}
+              <img loading="lazy" width="" height="" data-src="{{ section.settings.img_logo | image_url }}" class="lazyload img-fluid " alt="_img">
+              {% else %}
+              <img loading="lazy" width="" height="" data-src="//via.placeholder.com/130x60" class="lazyload img-fluid " alt="_img">
+              {% endif %}
+              {% if section.settings.title_banner4 != blank %}
+              <h3 class="title-banner" style="color: {{section.settings.color_title4}}">{{section.settings.title_banner4}}</h3>
+              {% endif %}
+              {% if section.settings.sub_title_banner4 != blank %}
+              <h6 class="sub-title" style="color: {{section.settings.color_sub_title4}}">{{section.settings.sub_title_banner4}}</h6>
+              {% endif %}
+
+              {% if section.settings.button_banner4 != blank %}
+              <a href="{{section.settings.url_banner}}" class="button-shop button-shop-{{ section.id }}" title="">{{section.settings.button_banner4}}</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>	
+
+  .section-banner-v9 .banner-info .banner-content .button-shop-{{ section.id }} {
+    color: {{section.settings.color_url}};
+  }
+  .section-banner-v9 .banner-info .banner-content .button-shop-{{ section.id }}:hover {
+    color: {{section.settings.color_url_hover}};
+  }
+  .section-banner-v9 .banner-info .banner-content .button:hover:before {
+    
+    color: {{section.settings.color_url_hover}};
+  }
+  .section-banner-v9 .banner-info .banner-content .button:before {
+    background: {{section.settings.color_url}};
+  }
+  .section-banner-v9 .elementor-section .content-elementor .button-shop-{{ section.id }} {
+    background: {{section.settings.bg_url}};
+    color : {{section.settings.color_url2}};
+  }
+  .section-banner-v9 .elementor-section .content-elementor .button-shop-{{ section.id }}:hover {
+    background: {{section.settings.bg_url_hover}};
+    color : {{section.settings.color_hover_url2}};
+  }
+
+</style>
+
+{% schema %}
+{
+  "name": "BANNER V9",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Space"
+    },
+    {
+      "type": "text",
+      "id": "margin_top",
+      "label": "Margin Top",
+      "info": "Defined in pixels. Do not add the 'px' unit."
+    },
+    {
+      "type": "text",
+      "id": "margin_bottom",
+      "label": "Margin Bottom",
+      "info": "Defined in pixels. Do not add the 'px' unit."
+    },
+    {
+      "type": "header",
+      "content": "Section Banner"
+    },
+    {
+      "type": "image_picker",
+      "id": "img_banner",
+      "label": "Image Banner",
+      "info": "960 x 624px recommended"
+    },
+    {
+      "type": "text",
+      "id": "sub_title_banner",
+      "label": "Sub Title Banner",
+      "default": "Timeless and"
+    },
+    {
+      "type": "color",
+      "id": "color_sub_title",
+      "label": "Color Sub Title banner",
+      "default": "#fff"
+    },
+    {
+      "type": "text",
+      "id": "title_banner",
+      "label": " Title Banner",
+      "default": "Holiday Deals On Fashion Clothes"
+    },
+    {
+      "type": "color",
+      "id": "color_title",
+      "label": "Color Title banner",
+      "default": "#fff"
+    },
+    {
+      "type": "text",
+      "id": "button_banner",
+      "label": "Button Banner 1",
+      "default": "Shop now"
+    },
+    {
+      "type": "header",
+      "content": "Section Banner 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "img_banner2",
+      "label": "Image Banner 2",
+      "info": "960 x 624px recommended"
+    },
+    {
+      "type": "text",
+      "id": "sub_title_banner2",
+      "label": "Sub Title Banner 2",
+      "default": "Timeless and"
+    },
+    {
+      "type": "color",
+      "id": "color_sub_title2",
+      "label": "Color Sub Title banner 2",
+      "default": "#fff"
+    },
+    {
+      "type": "text",
+      "id": "title_banner2",
+      "label": " Title Banner 2",
+      "default": "Holiday Deals On Fashion Clothes"
+    },
+    {
+      "type": "color",
+      "id": "color_title2",
+      "label": "Color Title banner 2",
+      "default": "#fff"
+    },
+    {
+      "type": "text",
+      "id": "button_banner2",
+      "label": "Button Banner 2",
+      "default": "Shop now"
+    },
+    {
+      "type": "header",
+      "content": "Section Banner 3"
+    },
+    {
+      "type": "collection",
+      "id": "select_collection",
+      "label": "Select Collection"
+    },
+    {
+      "type": "range",
+      "id": "products_limit",
+      "label": "Limit products",
+      "min": 2,
+      "max": 50,
+      "step": 1,
+      "default": 2
+    },
+    {
+      "type": "text",
+      "id": "sub_title_banner3",
+      "label": "Sub Title Banner 3",
+      "default": "When to use lorem ipsum"
+    },
+    {
+      "type": "color",
+      "id": "color_sub_title3",
+      "label": "Color Sub Title banner 3",
+      "default": "#777"
+    },
+    {
+      "type": "text",
+      "id": "title_banner3",
+      "label": " Title Banner 3",
+      "default": "Check The Bestsellers"
+    },
+    {
+      "type": "color",
+      "id": "color_title3",
+      "label": "Color Title banner 3",
+      "default": "#000"
+    },
+    {
+      "type": "header",
+      "content": "Section Banner 4"
+    },
+    {
+      "type": "image_picker",
+      "id": "img_logo",
+      "label": "Image Logo",
+      "info": "130 x 60px recommended"
+    },
+    {
+      "type": "text",
+      "id": "title_banner4",
+      "label": " Title Banner 4",
+      "default": "Basic Collection"
+    },
+    {
+      "type": "color",
+      "id": "color_title4",
+      "label": "Color Title banner 4",
+      "default": "#000"
+    },
+    {
+      "type": "text",
+      "id": "sub_title_banner4",
+      "label": "Sub Title Banner 4",
+      "default": "The passage experienced a surge in popularity during the 1960s when Letraset used it on their dry-transfer sheets, and again during the 90s as desktop publishers bundled the text with their software."
+    },
+    {
+      "type": "color",
+      "id": "color_sub_title4",
+      "label": "Color Sub Title banner 4",
+      "default": "#777"
+    },
+    {
+      "type": "text",
+      "id": "button_banner4",
+      "label": "Button Banner 4",
+      "default": "Shop now"
+    },
+    {
+      "type": "header",
+      "content": "Color Button 1"
+    },
+    {
+      "type": "color",
+      "id": "color_url",
+      "label": "Color button banner",
+      "default": "#222"
+    },
+    {
+      "type": "color",
+      "id": "color_url_hover",
+      "label": "Color button banner Hover",
+      "default": "#222"
+    },
+    {
+      "type": "header",
+      "content": "Color Button 2"
+    },
+    {
+      "type": "color",
+      "id": "color_url2",
+      "label": "Color button banner 2",
+      "default": "#222"
+    },
+    {
+      "type": "color",
+      "id": "color_hover_url2",
+      "label": "Color button banner Hover 2",
+      "default": "#222"
+    },
+    {
+      "type": "color",
+      "id": "bg_url",
+      "label": "background button 2",
+      "default": "#222"
+    },
+    {
+      "type": "color",
+      "id": "bg_url_hover",
+      "label": "background button Hover 2",
+      "default": "#222"
+    }
+  ],
+  "presets": [
+    {
+      "name": "BANNER V9",
+      "category": "HOME"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

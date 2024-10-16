@@ -1,0 +1,155 @@
+<div data-section-id="{{ section.id }}" data-section-type="section-banner-v13" style="{% if section.settings.margin_top != blank %}margin-top: {{section.settings.margin_top}}px;{%endif%} {% if section.settings.margin_bottom != blank %}margin-bottom: {{section.settings.margin_bottom}}px;{% endif %}">
+  <div class="section-banner-v13" style="background-image : url({% if section.settings.img_banner1 != blank  %}{{section.settings.img_banner1 | img_url : 'master'}} {% else %}//via.placeholder.com/1920x1000 {% endif %}); background-position : center; background-size: cover">
+    <div class="banner-box">
+      
+      <div class="banner-info">
+        <div class="bg-video">
+          <div class="bwp-image videos">
+            {% if section.settings.img_top != blank %}
+            <img loading="lazy" width="" height="" data-src="{{ section.settings.img_top | image_url }}" class="lazyload img-fluid " alt="_img_banner_">
+            {% else %}
+            <img loading="lazy" width="" height="" data-src="https://via.placeholder.com/230x230" class="lazyload img-fluid " alt="_img_banner_">
+            {% endif %}
+          </div>
+        </div>
+        <div class="banner_border">
+          {% if section.settings.title_banner != blank %}
+          <h3 class="title" style="color: {{section.settings.color_title}}">{{section.settings.title_banner}}</h3>
+          {% endif %}
+          {% if section.settings.sub_title != blank %}
+          <p class="sub-title" style="color: {{section.settings.color_sub_title}}">{{section.settings.sub_title}}</p>
+          {% endif %}
+          <a class="bwp-video" data-fancybox href="{{section.settings.url_video}}">
+          	<i class="fa fa-play" aria-hidden="true"></i>
+          </a>
+          {% if section.settings.button_1 != blank %}
+          <a href="{{section.settings.url_button1}}" class="button-shop button-shop-{{ section.id }} text-center">{{section.settings.button_1}}</a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  .section-banner-v13 .banner-info .button-shop-{{ section.id }} {
+    color: {{section.settings.color_btn}};
+    background: {{section.settings.bg_btn}};
+  }
+  .section-banner-v13 .banner-info .button-shop-{{ section.id }}:hover {
+    color: {{section.settings.color_btn_hover}};
+    background: {{section.settings.bg_btn_hover}};
+    border-color:{{section.settings.bg_btn_hover}};
+  }
+</style>
+{% schema %}
+{
+  "name": "BANNER V13",
+  "settings": [
+	{
+      "type": "image_picker",
+      "id": "img_top",
+      "label": "Image Top",
+      "info": "230 x 230px recommended"
+    },
+    {
+      "type": "image_picker",
+      "id": "img_banner1",
+      "label": "Backgroud Image",
+      "info": "1920 x 1200px recommended"
+    },
+	{
+      "type": "url",
+      "id": "url_video",
+      "label": "URL Video"
+    },
+    {
+      "type": "text",
+      "id": "title_banner",
+      "label": "Heading banner",
+      "default": "UPGRADE YOUR GROOMING ROUTINE"
+    },
+    {
+      "type": "color",
+      "id": "color_title",
+      "label": "Color Heading",
+      "default": "#fff"
+    },
+    {
+      "type": "text",
+      "id": "sub_title",
+      "label": "Subheading",
+      "default": "Earn Points for Every Purchase"
+    },
+    {
+      "type": "color",
+      "id": "color_sub_title",
+      "label": "Color Subheading",
+      "default": "#fff"
+    },
+    {
+      "type": "text",
+      "id": "button_1",
+      "label": "Button label",
+      "default": "SHOP NOW"
+    },
+    {
+      "type": "color",
+      "id": "color_btn",
+      "label": "Color Button",
+      "default": "#fff"
+    },
+    {
+      "type": "color",
+      "id": "bg_btn",
+      "label": "Background Button",
+      "default": "#000"
+    },
+    {
+      "type": "color",
+      "id": "color_btn_hover",
+      "label": "Color Button Hover",
+      "default": "#000"
+    },
+    {
+      "type": "color",
+      "id": "bg_btn_hover",
+      "label": "Background Button Hover",
+      "default": "#fff"
+    },
+    {
+      "type": "url",
+      "id": "url_button1",
+      "label": "URL Button",
+      "default": "/collections/all"
+    },
+    {
+      "type": "header",
+      "content": "Section Space"
+    },
+    {
+      "type": "text",
+      "id": "margin_top",
+      "label": "Margin Top",
+      "info": "Defined in pixels. Do not add the 'px' unit."
+    },
+    {
+      "type": "text",
+      "id": "margin_bottom",
+      "label": "Margin Bottom",
+      "info": "Defined in pixels. Do not add the 'px' unit."
+    }
+  ],
+  "presets": [
+    {
+      "name": "BANNER V13",
+      "category": "HOME"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
